@@ -8,7 +8,11 @@
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
-          "standalone": false
+          "standalone": false,
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         },
         "@schematics/angular:directive": {
           "standalone": false
@@ -33,9 +37,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/assets",
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets",
+                "output": "src/assets"
               }
             ],
             "styles": [
@@ -105,5 +111,8 @@
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

@@ -1,0 +1,29 @@
+<section class="game-detail" *ngIf="game">
+  <button class="back-button" (click)="goBack()">⬅ retourner</button>
+
+  <div class="game-container">
+    <img class="game-image" [src]="game.image" [alt]="game.name">
+    <div class="game-info">
+      <h1>{{ game.name }}</h1>
+      <p><strong>Type:</strong> {{ game.type }}</p>
+      <p><strong>Platform:</strong> {{ game.platform }}</p>
+      <p><strong>Players:</strong> {{ game.players }}</p>
+      <p><strong>Release Date:</strong> {{ game.releaseDate }}</p>
+      <p><strong>Note:</strong> {{ game.rating }}/10</p>
+      <p class="game-description">{{ game.description }}</p>
+    </div>
+  </div>
+
+  <h3>Évaluation des joueurs</h3>
+  <div *ngFor="let review of game.reviews" class="review">
+    <p><strong>{{ review.username }}:</strong> {{ review.content }}</p>
+  </div>
+
+  <button class="add-review-button" (click)="toggleReviewForm()">➕ Ajouter un commentaire</button>
+
+  <form *ngIf="showForm" [formGroup]="reviewForm" (ngSubmit)="submitReview()">
+    <input type="text" formControlName="username" placeholder="Entrez votre nom" required>
+    <textarea formControlName="content" placeholder="Entrez votre commentaire" required></textarea>
+    <button type="submit">Valide</button>
+  </form>
+</section>

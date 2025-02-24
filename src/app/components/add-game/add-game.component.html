@@ -1,0 +1,62 @@
+<div class="add-game-container">
+  <h1>Ajouter un nouveau jeu</h1>
+  <div class="form-card">
+    <form [formGroup]="addGameForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">Nom du jeu：</label>
+        <input id="name" formControlName="name" type="text" placeholder="Entrez le nom du jeu" required>
+      </div>
+
+      <div class="form-group">
+        <label for="type">Type:</label>
+        <input id="type" formControlName="type" type="text" placeholder="Entrez le type" required>
+      </div>
+
+      <div class="form-group">
+        <label for="platform">Platform:</label>
+        <input id="platform" formControlName="platform" type="text" placeholder=" PC, PS5, Xbox" required>
+      </div>
+
+      <div class="form-group">
+        <label for="players">Players:</label>
+        <input id="players" formControlName="players" type="number" placeholder="Nombre de joueurs supportés" required>
+      </div>
+
+      <div class="form-group">
+        <label for="releaseDate">Release Date:</label>
+        <input id="releaseDate" formControlName="releaseDate" type="date" required>
+      </div>
+
+      <div class="form-group">
+        <label for="rating">Note (1-10):</label>
+        <input id="rating" formControlName="rating" type="number" min="1" max="10" step="0.1" placeholder="Note de jeu">
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image URL:</label>
+        <input id="image" formControlName="image" type="text" placeholder="Entrez le lien de l'image du jeu">
+      </div>
+
+      <div class="form-group">
+        <label for="description">Description du jeu:</label>
+        <textarea id="description" formControlName="description" placeholder="Entrez le description du jeu" rows="4"></textarea>
+      </div>
+
+      <button type="submit" class="submit-btn">Ajouter le jeu</button>
+    </form>
+
+
+    <div class="preview">
+      <h2>Aperçu en temps réel du jeu</h2>
+      <div class="game-card">
+        <img *ngIf="previewGame.image" [src]="previewGame.image" alt="Jaquette du jeu">
+        <h3>{{ previewGame.name || 'Nom du jeu' }}</h3>
+        <p><strong>Type:</strong> {{ previewGame.type || 'A remplir' }}</p>
+        <p><strong>Platform:</strong> {{ previewGame.platform || 'A remplir' }}</p>
+        <p><strong>Players:</strong> {{ previewGame.players || 'A remplir' }}</p>
+        <p><strong>Note:</strong> {{ previewGame.rating }}/10</p>
+        <p><strong>Release Date:</strong> {{ previewGame.releaseDate || 'A remplir' }}</p>
+        <p><strong>Description:</strong> {{ previewGame.description || 'A remplir' }}</p>
+      </div>
+  </div>
+</div>
